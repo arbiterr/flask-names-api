@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV FLASK_APP "app.py"
+ENV FLASK_APP "api/config:app"
 ENV FLASK_ENV "development"
 ENV FLASK_DEBUG True
 
@@ -24,4 +24,5 @@ COPY . /usr/src/app/
 
 EXPOSE 5000
 
-CMD flask run --host=0.0.0.0
+# CMD flask run --host=0.0.0.0
+CMD python api/server.py --host=0.0.0.0

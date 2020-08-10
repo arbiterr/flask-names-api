@@ -9,3 +9,27 @@ produces:
   - "application/json"
 
 basePath: "/api"
+
+paths:
+  /test:
+    get:
+      operationId: "views.test"
+      summary: "Test"
+      description: "Test"
+      responses:
+        200:
+          description: "Successful read test operation"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Name"
+
+definitions:
+  Name:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        description: First name of the newborn
