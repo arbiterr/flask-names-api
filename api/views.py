@@ -5,20 +5,27 @@ from models import (
     NewbornSchema,
 )
 
-def test():
-    newborns = Newborn.query.filter_by(year=1974)
-    newborn_schema = NewbornSchema(many=True)
-    return newborn_schema.dump(newborns)
 
-
-def get_names_by_year(year):
+def get_newborns_by_year(year):
     """
     This function responds to a request for /api/year/<year>
-    with the complete lists of names and stats for the given year
+    with the complete list of names and stats for the given year
 
     :param year:    year to be used as a filter
     :return:        json string of list of names and stats of newborns
     """
     newborns = Newborn.query.filter_by(year=year)
+    newborn_schema = NewbornSchema(many=True)
+    return newborn_schema.dump(newborns)
+
+def get_newborns_by_name(name):
+    """
+    This function responds to a request for /api/names/<name>
+    with the complete list of newborns and stats for the given name
+
+    :param name:    name to be used as a filter
+    :return:        json string of list of names and stats of newborns
+    """
+    newborns = Newborn.query.filter_by(name=name)
     newborn_schema = NewbornSchema(many=True)
     return newborn_schema.dump(newborns)

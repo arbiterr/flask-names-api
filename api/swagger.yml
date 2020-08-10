@@ -11,14 +11,40 @@ produces:
 basePath: "/api"
 
 paths:
-  /test:
+  /year/{year}:
     get:
-      operationId: "views.test"
-      summary: "Test"
-      description: "Test"
+      operationId: "views.get_newborns_by_year"
+      summary: "Read all newborns for a given year"
+      description: "Read all newborns for a given year"
+      parameters:
+        - name: "year"
+          in: "path"
+          description: "Year for filtering"
+          type: "integer"
+          format: "int64"
+          required: true
       responses:
         200:
-          description: "Successful read test operation"
+          description: "Successfully read all newborns for the given year"
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Name"
+
+  /names/{name}:
+    get:
+      operationId: "views.get_newborns_by_name"
+      summary: "Read all newborns for a given name"
+      description: "Read all newborns for a given name"
+      parameters:
+        - name: "name"
+          in: "path"
+          description: "Name for filtering"
+          type: "string"
+          required: true
+      responses:
+        200:
+          description: "Successfully read all newborns for the given name"
           schema:
             type: array
             items:
