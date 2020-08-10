@@ -10,7 +10,6 @@ class Newborn(db.Model):
     position = db.Column(db.Integer)
 
 
-
 class NewbornSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Newborn

@@ -11,7 +11,8 @@ ENV FLASK_APP "api/config:app"
 ENV FLASK_ENV "development"
 ENV FLASK_DEBUG True
 
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev \
+    && apk add jpeg-dev zlib-dev libjpeg
 
 # install dependencies
 RUN pip install --upgrade pip
